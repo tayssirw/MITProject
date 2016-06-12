@@ -1,0 +1,105 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+	
+ <h:head>
+        <title>Connecter</title>
+        <meta charset="utf-8" />
+
+        <link rel="icon" href="images/favicon.ico" />
+        <link rel="shortcut icon" href="images/favicon.ico" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/slider.css" />
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/jquery-migrate-1.1.1.js"></script>
+        <script src="js/superfish.js"></script>
+        <script src="js/jquery.equalheights.js"></script>
+        <script src="js/tms-0.4.1.js"></script>
+        <script src="js/jquery.carouFredSel-6.1.0-packed.js"></script>
+        <script src="js/jquery.ui.totop.js"></script>
+        
+        </h:head>
+    <h:body>
+        <!--==============================header=================================-->
+        <header>
+            <div class="container_12">
+                <div class="grid_12">
+                    <h1>
+                        <a href="index.xhtml"><img src="images/logo.png" alt="BIZZ" /></a>
+                    </h1>
+                </div>
+            </div>
+            <nav>
+                <div class="container_12">
+                    <div class="grid_12">
+                        <ul class="sf-menu">
+                            <li ><a href="index.xhtml">accueil</a></li>
+<!--                             <li><a href="index-1.xhtml">ABOUT</a> -->
+<!--                                 <ul> -->
+<!--                                     <li><a href="#">OUR HISTORY</a></li> -->
+<!--                                     <li><a href="#">OUR TEAM</a></li> -->
+                                    <li><a href="Inscription.xhtml">Inscrire</a></li>
+<!--                                 </ul></li> -->
+<!--                             <li><a href="index-2.xhtml">PROJECTS</a> -->
+<!--                                 <ul> -->
+                                    <li class="current"><a href="login.xhtml" >Connecter</a></li>
+<!--                                 </ul> -->
+<!--                             </li> -->
+<!--                             <li><a href="index-3.xhtml">SERVICES</a></li> -->
+<!--                             <li><a href="#">CONTRAT</a> -->
+<!--                             <ul> -->
+<!--                     <li><a href="index-4.xhtml">CONTRAT MEMBRE</a></li> -->
+<!--                     <li><a href="ContratSociete.xhtml">CONTRAT SOCIETE</a></li> -->
+<!--                     </ul> -->
+<!--                             </li> -->
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!--=======content================================-->
+        <p:fieldset style="margin-left:30%;margin-right:30%" id="content">
+<!--         method="post" action="j_spring_security_check" -->
+       	<h:form id="form" >
+       	<h:panelGrid columns="2" style="margin:10%" >
+        <f:facet name="header"><div class="indent" >Authentification</div></f:facet>
+        <p:outputLabel value="E-mail :"/>
+        <p:inputText value="#{loginBean.username}" />
+        <p:outputLabel value="Mote de Passe :"/>
+        <p:inputText value="#{loginBean.password}" type="password"/>
+        <p:commandButton value="Connecter" icon="ui-icon-key" action="#{loginBean.authentifier()}" update="form" />
+        <p:commandButton value="Annuler" icon="ui-icon-cancel">
+        <p:ajax update="form" resetValues="true"/>
+        </p:commandButton>
+        </h:panelGrid>
+        </h:form>
+        
+        </p:fieldset>
+         <!--==============================footer=================================-->
+        <footer>
+            <div class="container_12">
+<!--                 <div class="grid_8"> -->
+<!--                     <span>BiZZ 2013 | Privacy Policy | Website designed by -->
+<!--                         <a href="http://www.templatemonster.com/" rel="nofollow" -->
+<!--                            target="_blank">TemplateMonster.com</a> -->
+<!--                     </span> -->
+<!--                 </div> -->
+<!--                 <div class="grid_4"> -->
+<!--                     <ul class="soc-icon"> -->
+<!--                         <li><a href="#"><img src="images/icon-3.png" alt="" /></a></li> -->
+<!--                         <li><a href="#"><img src="images/icon-2.png" alt="" /></a></li> -->
+<!--                         <li><a href="#"><img src="images/icon-1.png" alt="" /></a></li> -->
+<!--                     </ul> -->
+<!--                 </div> -->
+            </div>
+        </footer>
+       </h:body> 
+        
+</html>

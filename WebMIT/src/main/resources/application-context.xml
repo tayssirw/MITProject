@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:s="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+
+
+ 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/mitdb?zeroDateTimeBehavior=convertToNull" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.mit.entity.Administrateur</value>
+				<value>com.mit.entity.Archmemb</value>
+				<value>com.mit.entity.Attestation</value>
+				<value>com.mit.entity.AttestationId</value>
+				<value>com.mit.entity.Competance</value>
+				<value>com.mit.entity.Contratsociete</value>
+				<value>com.mit.entity.Contrat</value>
+				<value>com.mit.entity.Contratmembre</value>
+				<value>com.mit.entity.ContratmembreId</value>
+				<value>com.mit.entity.ContratsocieteId</value>
+				<value>com.mit.entity.Membre</value>
+				<value>com.mit.entity.Projet</value>
+				<value>com.mit.entity.Societe</value>
+				<value>com.mit.entity.Tache</value>
+				<value>com.mit.entity.TacheId</value>
+				<value>com.mit.entity.Utilisateur</value>
+				<value>com.mit.entity.Cv</value>
+				<value>com.mit.entity.Diplome</value>
+				<value>com.mit.entity.Etablissement</value>
+				<value>com.mit.entity.Experience</value>
+				<value>com.mit.entity.Pvreunion</value>
+				
+
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="current_session_context_class">thread</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<context:annotation-config />
+	<context:component-scan base-package="com.mit"></context:component-scan>
+
+	
+<!-- 	<s:http> -->
+<!-- 	<s:intercept-url pattern="/indexAdmin/**" access="ROLE_ADMIN" /> -->
+<!-- 	<s:intercept-url pattern="/indexMemb/**" access="ROLE_MEMBRE"/> -->
+<!-- 	<s:form-login login-page="/login" default-target-url="/index" -->
+<!-- 	authentication-failure-url="/login" /> -->
+<!-- 	<s:logout logout-success-url="/logout" /> -->
+<!-- 	</s:http> -->
+<!-- 	<s:authentication-manager> -->
+<!-- 	<s:authentication-provider> -->
+<!-- 	<s:password-encoder hash="md5"></s:password-encoder> -->
+	
+<!-- 	<s:jdbc-user-service data-source-ref="dataSource"  -->
+<!-- 	users-by-username-query="select email,password  -->
+<!--  	from membre where email=? and password=?"  role-prefix="ROLE_MEMBRE"/>  -->
+<!-- 	<s:jdbc-user-service data-source-ref="datasource" -->
+<!-- 	users-by-username-query="select username,password, actived -->
+<!-- 	fromuserswhereusername=?" a /> -->
+	
+	
+<!-- 	<s:user-service>    -->
+<!-- 	<s:user name="admin1" password="admin1" authorities="ROLE_ADMIN_PROD"/> -->
+<!-- 	<s:user name="admin2" authorities="ROLE_ADMIN_CAT,ROLE_ADMIN_PROD" password="admin2" /> -->
+<!-- 	</s:user-service> -->
+	
+<!-- 	</s:authentication-provider> -->
+<!-- 	</s:authentication-manager> -->
+
+</beans>

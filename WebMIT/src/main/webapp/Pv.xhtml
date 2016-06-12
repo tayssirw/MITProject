@@ -1,0 +1,124 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+      <h:head>
+     <title>Pv Reunion</title>
+     <meta charset="utf-8"/>
+     <link rel="icon" href="images/favicon.ico"/>
+     <link rel="shortcut icon" href="images/favicon.ico" />
+     <link rel="stylesheet" href="css/style.css"/>
+     <script src="js/jquery.js"></script>
+     <script src="js/jquery.easing.1.3.js"></script>
+     <script src="js/jquery-migrate-1.1.1.js"></script>
+     <script src="js/superfish.js"></script>
+     <script src="js/jquery.equalheights.js"></script>
+     <script src="js/jquery.ui.totop.js"></script>
+     </h:head>
+<h:body>
+<!--==============================header=================================-->
+<header>
+	<div class="container_12">
+		<div class="grid_12">
+           <h1><a href="index.xhtml"><img src="images/logo.png" alt="BIZZ"/></a></h1>
+		</div>
+    </div>
+    <nav>
+        <div class="container_12">
+            <div class="grid_12">
+                <ul class="sf-menu">
+					<li><a href="indexAdmin.xhtml">Accueil</a></li>
+                     <li  ><a href="#">Ressources</a>
+                    <ul>
+                    	<li><a href="Membre.xhtml">Membre</a></li>
+                    	<li><a href="Societe.xhtml">Societe</a></li>
+                     	<li><a href="Cv.xhtml">CV</a></li>
+                    </ul>
+                    </li>            
+                            <li class="current"><a href="Projet.xhtml">Projet</a>
+                            <ul>
+							<li><a href="Suivi.xhtml">Suivi de projet</a></li>                           
+							<li><a href="Pv.xhtml">Pv de Reunion</a></li>
+							</ul>
+							</li>
+                    <li><a href="#">Contrat</a>
+                    <ul>
+                            <li><a href="ContratMembre.xhtml">Contrat Membre</a></li>
+                             <li><a href="ContratSociete.xhtml">Contrat Societe</a></li>
+                        </ul>
+                    </li>
+                    <li ><a href="Attestation.xhtml">Attestation</a></li>
+
+                </ul>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--=======content================================-->
+<p:growl id="message"/>
+<div id="content">
+<div class="container_12 bot-1">
+		<div class="grid_12">
+        	<h2 class="indent-2">Ajouter tache</h2>
+		</div>
+        <div class="grid_5">
+	<h:form>
+	<p:panelGrid>
+	<h:panelGroup>
+	<label class="name">
+	<span class="title">Objet Reunion :</span>
+	<p:inputText value="#{pvreunionBean.pvreunion.objetReunion}" />
+	</label>
+	</h:panelGroup>
+	<h:panelGroup>
+	<label class="name">
+	<span class="title">Date Reunion :</span>
+	<p:inputText value="#{pvreunionBean.pvreunion.dateReunion}" type="date">
+	<f:convertDateTime pattern="yyyy-MM-dd"/>
+	</p:inputText>
+	</label>
+	</h:panelGroup>
+	<h:panelGroup>
+	<label class="name">
+	<span class="title">Contenu Reunion :</span>
+	<p:inputTextarea value="#{pvreunionBean.pvreunion.contenu}"/>
+	</label>
+	</h:panelGroup>
+	<h:panelGroup>
+	<label class="name">
+	<span class="title">Projet</span>
+	<h:selectOneMenu value="#{pvreunionBean.id}" id="pv">
+	<p:ajax listener="#{contratBean.lister()}" process="pv" update="mem"/>
+	<f:selectItem itemLabel="--Séléctionnez--" noSelectionOption="true"/>
+	<f:selectItems value="#{projetBean.projet}" var="p" itemLabel="#{p.titreProjet}" itemValue="#{p.idProjet}"/>
+	</h:selectOneMenu>
+	</label>
+	</h:panelGroup>
+		<h3 style="margin-top: 0">Membres</h3>
+<!--     <p:pickList  id="mem" value=""  /> -->
+ 	</p:panelGrid>
+ 	<p:commandButton value="créer" icon="ui-icon-plus" action="#{pvreunionBean.ajouterPv()}"/>
+	</h:form>
+	</div>
+	</div>
+	</div>
+	 <!--==============================footer=================================-->
+<footer>
+	<div class="container_12">
+		<div class="grid_8">
+			<span>MIT 2016 | Make In Tunisia</span>
+		</div>
+        <div class="grid_4">
+        	<ul class="soc-icon">
+            	<li><a href="#"><img src="images/icon-3.png" alt=""/></a></li>
+                <li><a href="#"><img src="images/icon-2.png" alt=""/></a></li>
+                <li><a href="#"><img src="images/icon-1.png" alt=""/></a></li>
+            </ul>
+        </div>
+	</div>
+</footer>
+	</h:body>
+</html>

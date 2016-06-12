@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#Tache.xhtml" PATH="/Tache.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Tache.xhtml:0" NAME="item"
+   PATH="/Tache.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="echec::#Projet.xhtml" NAME="output"
+    PATH="/Projet.xhtml" TARGET="rules:#Projet.xhtml" TITLE="echec" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Projet.xhtml" PATH="/Projet.xhtml"
+  SHAPE="448,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#indexMemb.xhtml" PATH="/indexMemb.xhtml"
+  SHAPE="256,289,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#Inscription.xhtml" PATH="/Inscription.xhtml"
+  SHAPE="32,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Inscription.xhtml:0" NAME="item"
+   PATH="/Inscription.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="ajouter::#indexMemb.xhtml" NAME="output"
+    PATH="/indexMemb.xhtml" TARGET="rules:#indexMemb.xhtml"
+    TITLE="ajouter" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
